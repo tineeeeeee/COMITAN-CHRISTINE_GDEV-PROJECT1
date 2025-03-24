@@ -1,0 +1,106 @@
+[gd_scene load_steps=9 format=3 uid="uid://btxm2500iknrl"]
+
+[ext_resource type="Script" path="res://Scenes/Game/Game.cs" id="1_6hnwd"]
+[ext_resource type="Texture2D" uid="uid://f7ipkyrwmy3p" path="res://assets/GameBg.png" id="2_8t0j1"]
+[ext_resource type="PackedScene" uid="uid://ckj1w6yck0fxn" path="res://Scenes/Paddle/Paddle.tscn" id="3_4mven"]
+[ext_resource type="PackedScene" uid="uid://c5646eu6pjjlu" path="res://Scenes/Gem/Gem.tscn" id="4_x8hjk"]
+[ext_resource type="AudioStream" uid="uid://dn3pt321xkwtw" path="res://assets/bgm_action_5.mp3" id="5_o8bxo"]
+[ext_resource type="AudioStream" uid="uid://c0gh74siuxxwr" path="res://assets/spell1_0.wav" id="6_m4jf3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bkisa"]
+font_size = 60
+outline_size = 12
+outline_color = Color(0.392157, 0.219608, 0.12549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kf0bv"]
+line_spacing = 1.0
+font_size = 30
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("_spawnTimer", "_scoreLabel", "_music", "_effects")]
+script = ExtResource("1_6hnwd")
+_gemScene = ExtResource("4_x8hjk")
+_spawnTimer = NodePath("Timer")
+_scoreLabel = NodePath("ScoreLabel")
+_music = NodePath("Music")
+_effects = NodePath("Effects")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_8t0j1")
+
+[node name="Paddle" parent="." instance=ExtResource("3_4mven")]
+position = Vector2(562, 552)
+_speed = 400.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 64.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0.677012, 0.493015, 0.951487, 1)
+theme_override_colors/font_shadow_color = Color(0.929715, 0.929715, 0.929715, 1)
+theme_override_colors/font_outline_color = Color(0.264389, 0.264389, 0.264389, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/font_size = 48
+text = "0000"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_o8bxo")
+volume_db = -16.0
+autoplay = true
+
+[node name="Effects" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_m4jf3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.75
+anchor_bottom = 16.15
+offset_left = 402.0
+offset_top = 217.0
+offset_right = -404.0
+offset_bottom = -346.0
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_bkisa")
+
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.8
+anchor_bottom = 16.187
+offset_left = 485.0
+offset_top = 366.0
+offset_right = -492.0
+offset_bottom = -250.48
+text = "BACK TO MAIN MENU"
+icon_alignment = 1
+expand_icon = true
+
+[node name="FinalScoreLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.8
+anchor_bottom = 16.2
+offset_left = 469.0
+offset_top = 300.0
+offset_right = -472.0
+offset_bottom = -286.0
+label_settings = SubResource("LabelSettings_kf0bv")
+horizontal_alignment = 1

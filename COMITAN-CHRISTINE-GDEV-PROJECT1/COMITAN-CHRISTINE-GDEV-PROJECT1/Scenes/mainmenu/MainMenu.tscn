@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqlgrpras4jcb"]
+
+[ext_resource type="Texture2D" uid="uid://f7ipkyrwmy3p" path="res://assets/GameBg.png" id="1_cgop4"]
+[ext_resource type="Script" path="res://Scenes/mainmenu/MainMenu.cs" id="1_jd8dl"]
+[ext_resource type="Texture2D" uid="uid://cu5tybj2eax11" path="res://assets/play01.png" id="2_lwq1s"]
+[ext_resource type="Texture2D" uid="uid://dtbqfbl2jnit4" path="res://assets/leaderboard01.png" id="4_6jqgb"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jd8dl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1112.0
+offset_bottom = -608.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameBg" type="Sprite2D" parent="TextureRect"]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_cgop4")
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 500.0
+offset_top = 227.0
+offset_right = -500.0
+offset_bottom = -341.0
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+icon = ExtResource("2_lwq1s")
+
+[node name="LeaderboardButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 500.0
+offset_top = 314.0
+offset_right = -500.0
+offset_bottom = -254.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("4_6jqgb")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 114.0
+offset_right = 691.0
+offset_bottom = 160.0
+theme_override_font_sizes/font_size = 33
+text = "GEM CATCHER"
+horizontal_alignment = 2
